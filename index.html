@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<!--
+	Eventually by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>My Area Home Value</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<h1>What is my property worth?</h1>
+				<h2>Search Location</h1>
+			</header>
+			<form id="signup-form" method="post" action="#">
+				<input type="email" name="name" id="name" placeholder="Name" />
+				<input type="email" name="email" id="email" placeholder="Email Address" />
+			</form>
+		<!-- Signup Form -->
+			<form id="signup-form" method="post" action="#">
+				<input type="email" name="street" id="street" placeholder="Street Address" />
+				<input type="email" name="unit" id="unit" placeholder="Apt #" />
+				<input type="email" name="city" id="city" placeholder="City" />
+				<input type="email" name="state" id="state" placeholder="State" />
+				<input type="email" style="width: 6.5em;" name="zip" id="zip" placeholder="Zip Code" />
+			</form>
+			<form id="signup-form" method="post" action="#">
+
+				<input id="submit" type="submit" value="Search" />
+			</form>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="mailto:myareahomevalue@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li style="color:white;">Intero</li><li style="color:white;">Mike Rezaee</li><li style="color:white;">License # 01208728</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
+			<h2 id="success" style="display:none;">Thanks, we'll be in touch!</h2>
+		<!-- Scripts -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script type="text/javascript"src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				window.history.replaceState( null, null, window.location.href );
+				(function() {
+					emailjs.init("user_5lpCz8jNSgQepTKxLiw4W");
+				})();
+				
+				$( document ).ready(function() {
+					$('#submit').click(function(e){
+						e.preventDefault();
+						
+						var name = $('#name').val();
+						var email = $('#email').val();
+						var street = $('#street').val();
+						var unit = $('#unit').val();
+						var city = $('#city').val();
+						var state= $('#state').val();
+						var zip = $('#zip').val();
+						var msg = 'Name: ' + name + '| ' +
+								  'Email: ' + email + '| ' +
+								  'Street Address: ' + street + '| ' + 
+								  'Unit: ' + unit + '| ' + 
+								  'City: ' + city + '| ' + 
+								  'State: ' + state + '| ' + 
+								  'Zip Code: ' + zip + '| ';
+
+						var params = {
+							from_name: name,
+							to_name: 'Mike Rezaee',
+							name: name,
+							email: email,
+							street: street,
+							unit: unit,
+							city: city,
+							state: state,
+							zip: zip
+						};
+
+						emailjs.send('service_iajgnjd', 'template_69rfqp2', params)
+						$('#success').show();
+					});
+				});
+			</script>
+	</body>
+</html>
